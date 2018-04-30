@@ -13,6 +13,7 @@ parser.add_argument('--learning_rate', dest='lr', type=int, default=0.0001, help
 parser.add_argument('--sample_size', dest='sample_size', type=int, default=60, help='# sample size')
 parser.add_argument('--gen_hidden', dest='gen_hidden', type=int, default=80, help='# hidden nodes in generator')
 parser.add_argument('--disc_hidden', dest='disc_hidden', type=int, default=80, help='# hidden nodes in discriminator')
+parser.add_argument('--your_login', dest='your_login', type=str, default='rubens', help='# your login name')
 
 args = vars(parser.parse_args())
 
@@ -140,7 +141,7 @@ def main():
     tf.summary.scalar("Generator_Loss", gen_loss)
     tf.summary.scalar("Discriminator_Loss", disc_loss)
     
-    logs_path = '/home/rubens/anaconda3/envs/plot_1'
+    logs_path = '/home/'+args['your_login']+'/anaconda3/envs/plot_1'
         
     summary = tf.summary.merge_all()
     
