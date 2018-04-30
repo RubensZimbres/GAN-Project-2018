@@ -1,6 +1,6 @@
 # Deep Convolutional GAN in Tensorflow - Linux Shell
 
-My project on DCGANs to be run via Linux shell command
+My GitHub project on DCGANs to be run via Linux shell command
 
 Instructions:
 
