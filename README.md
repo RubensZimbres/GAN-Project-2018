@@ -17,6 +17,7 @@ Arguments:
 --gen_hidden: # hidden nodes in generator: default=80  
 --disc_hidden: # hidden nodes in discriminator: default=80  
 
-To visualize training in Tensorboard: tensorboard --logdir=/home/your_login/anaconda3/envs/plot_1
+To visualize training in Tensorboard:  
+tensorboard --logdir=/home/your_login/anaconda3/envs/plot_1
 
 <img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/GAN_BEST_Linux.png>
