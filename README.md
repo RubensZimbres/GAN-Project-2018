@@ -10,7 +10,7 @@ cd GAN-Project-2018
 
 python main.py --epoch=5000 --learning_rate=0.0002
 
-Arguments:
+Arguments:  
 --epoch: default=1000  
 --learning_rate: default=0.0001  
 --sample_size: default=60  
