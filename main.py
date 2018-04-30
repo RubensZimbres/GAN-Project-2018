@@ -5,6 +5,7 @@ from keras.datasets import mnist
 import random
 import pandas as pd
 import argparse
+import matplotlib.gridspec as gridspec
 
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('--epoch', dest='nb_epoch', type=int, default=1000, help='# of epochs')
@@ -56,7 +57,7 @@ y_test=np.array(pd.get_dummies(y_test0))
 x_train=np.array(x_train).astype(np.float64)
 x_train_noisy=x_train_noisy.astype(np.float64)
 
-num_steps = args['epoch']
+num_steps = args['nb_epoch']
 batch_size = args['batch_size']
 show_steps=50
 learning_rate1=args['lr']
@@ -183,22 +184,28 @@ def main():
             summary_writer.add_summary(summary2, i)
             if i % show_steps == 0 or i == 1:
                 print('Epoch %i: Generator Loss: %f, Discriminator Loss: %f' % (i, gl, dl))
-    return print('Epoch %i: Generator Loss: %f, Discriminator Loss: %f' % (i, gl, dl))
+        gs = gridspec.GridSpec(3, 8)
+        gs.update(wspace=0.5)
+        for i in range(0,8):
+            ax1 = plt.subplot(gs[0, i])
+            ax1.get_xaxis().set_visible(False)
+            ax1.get_yaxis().set_visible(False)
+            plt.title('Orig')
+            plt.imshow(x_train_noisy[i].reshape(28, 28))
+            ax2 = plt.subplot(gs[1, i])
+            ax2.get_xaxis().set_visible(False)
+            ax2.get_yaxis().set_visible(False)
+            plt.title('Gen')
+            plt.imshow(np.array(h).reshape(60,28, 28)[i])
+            ax3 = plt.subplot(gs[2, i])
+            ax3.get_xaxis().set_visible(False)
+            ax3.get_yaxis().set_visible(False)
+            plt.title('Disc')
+            plt.imshow(np.array(g).reshape(60,28, 28)[i])
+            plt.gray()
+        plt.show()
+
+
             
 if __name__ == '__main__':
    main()
-
-
-plt.figure(figsize=(10, 10))
-for i in range(11,18):
-    ax = plt.subplot(1, 8, i-10)
-    plt.imshow(x_train_noisy[i].reshape(28, 28))
-    plt.imshow(np.array(h).reshape(60,28, 28)[i])
-    plt.imshow(np.array(g).reshape(60,28, 28)[i])
-    plt.gray()
-    ax.get_xaxis().set_visible(False)
-    ax.get_yaxis().set_visible(False)
-plt.show()
-
-'''RUN
-tensorboard --logdir=C:/Users/Rubens/Anaconda3/envs/tensorflow/Scripts/plot_1'''
