@@ -1,0 +1,7 @@
+tensorflow
+numpy
+matplotlib
+keras
+random
+pandas
+argparse
