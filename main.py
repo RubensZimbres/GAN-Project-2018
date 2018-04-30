@@ -9,8 +9,10 @@ import matplotlib.gridspec as gridspec
 
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('--epoch', dest='nb_epoch', type=int, default=1000, help='# of epochs')
-parser.add_argument('--batch_size', dest='batch_size', type=int, default=60, help='# images in batch')
 parser.add_argument('--learning_rate', dest='lr', type=int, default=0.0001, help='# learning rate')
+parser.add_argument('--sample_size', dest='sample_size', type=int, default=60, help='# sample size')
+parser.add_argument('--gen_hidden', dest='gen_hidden', type=int, default=80, help='# hidden nodes in generator')
+parser.add_argument('--disc_hidden', dest='disc_hidden', type=int, default=80, help='# hidden nodes in discriminator')
 
 args = vars(parser.parse_args())
 
@@ -22,7 +24,7 @@ x_test = x_test.astype('float32') / 255.
 x_train = x_train.reshape((len(x_train), np.prod(x_train.shape[1:])))
 x_test = x_test.reshape((len(x_test), np.prod(x_test.shape[1:])))
 
-n=60
+n=args['sample_size']
 
 x_train=x_train[0:n]
 x_test=x_test[n:n+n]
@@ -58,12 +60,12 @@ x_train=np.array(x_train).astype(np.float64)
 x_train_noisy=x_train_noisy.astype(np.float64)
 
 num_steps = args['nb_epoch']
-batch_size = args['batch_size']
+batch_size = args['sample_size']
 show_steps=50
 learning_rate1=args['lr']
 image_dim = 784 
-gen_hidden_dim = 80
-disc_hidden_dim = 80
+gen_hidden_dim = args['gen_hidden']
+disc_hidden_dim = args['disc_hidden']
 noise_dim = 10 
 
 def main():
@@ -115,7 +117,6 @@ def main():
     
     
     disc_fake = discriminator(gen_sample, reuse=True)
-    disc_concat = tf.concat([disc_real, disc_fake], axis=0)
     
     with tf.name_scope('DiscModel'):
         stacked_gan = discriminator(gen_sample, reuse=True)
@@ -140,18 +141,12 @@ def main():
     tf.summary.scalar("Discriminator_Loss", disc_loss)
     
     logs_path = 'C:/Users/Rubens/Anaconda3/envs/tensorflow/Scripts/plot_1'
-    
-    x_image = tf.summary.image('GenSample', tf.reshape(gen_sample, [-1, 28, 28, 1]), 4)
-    x_image2 = tf.summary.image('stacked_gan', tf.reshape(stacked_gan, [-1, 28, 28, 1]), 4)
-    
+        
     summary = tf.summary.merge_all()
     
     optimizer_gen = tf.train.AdamOptimizer(learning_rate=learning_rate1)
     optimizer_disc = tf.train.AdamOptimizer(learning_rate=learning_rate1)
-    
-    gen_vars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope='Generator')
-    disc_vars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope='Discriminator')
-    
+        
     with tf.name_scope('SGDdisc'):
         train_disc = optimizer_disc.minimize(disc_loss)
     
@@ -196,12 +191,12 @@ def main():
             ax2.get_xaxis().set_visible(False)
             ax2.get_yaxis().set_visible(False)
             plt.title('Gen')
-            plt.imshow(np.array(h).reshape(60,28, 28)[i])
+            plt.imshow(np.array(h).reshape(args['sample_size'],28, 28)[i])
             ax3 = plt.subplot(gs[2, i])
             ax3.get_xaxis().set_visible(False)
             ax3.get_yaxis().set_visible(False)
             plt.title('Disc')
-            plt.imshow(np.array(g).reshape(60,28, 28)[i])
+            plt.imshow(np.array(g).reshape(args['sample_size'],28, 28)[i])
             plt.gray()
         plt.show()
 
@@ -209,3 +204,4 @@ def main():
             
 if __name__ == '__main__':
    main()
+
