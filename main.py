@@ -140,7 +140,7 @@ def main():
     tf.summary.scalar("Generator_Loss", gen_loss)
     tf.summary.scalar("Discriminator_Loss", disc_loss)
     
-    logs_path = 'C:/Users/Rubens/Anaconda3/envs/tensorflow/Scripts/plot_1'
+    logs_path = '/home/rubens/anaconda3/envs/plot_1'
         
     summary = tf.summary.merge_all()
     
@@ -204,4 +204,3 @@ def main():
             
 if __name__ == '__main__':
    main()
-
