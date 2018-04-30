@@ -182,6 +182,7 @@ def main():
                 print('Epoch %i: Generator Loss: %f, Discriminator Loss: %f' % (i, gl, dl))
         gs = gridspec.GridSpec(3, 8)
         gs.update(wspace=0.5)
+        fig=plt.figure(figsize=(10,10))
         for i in range(0,8):
             ax1 = plt.subplot(gs[0, i])
             ax1.get_xaxis().set_visible(False)
@@ -199,6 +200,7 @@ def main():
             plt.title('Disc')
             plt.imshow(np.array(g).reshape(args['sample_size'],28, 28)[i])
             plt.gray()
+            gs.tight_layout(fig)
         plt.show()
 
 
