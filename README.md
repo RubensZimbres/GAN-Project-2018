@@ -13,7 +13,10 @@ python main.py --epoch=5000 --learning_rate=0.0002
 Arguments:
 --epoch: default=1000
 --learning_rate: default=0.0001
---batch_size: default=number of samples (60)
+--sample_size: default=60
+--gen_hidden: # hidden nodes in generator: default=80
+--disc_hidden: # hidden nodes in discriminator: default=80
 
+To visualize training in Tensorboard: tensorboard --logdir=/home/rubens/anaconda3/envs/plot_1
 
 <img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/GAN_BEST_Linux.png>
