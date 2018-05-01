@@ -9,7 +9,7 @@ import matplotlib.gridspec as gridspec
 import os
 
 parser = argparse.ArgumentParser(description='')
-parser.add_argument('--epoch', dest='nb_epoch', type=int, default=1000, help='# of epochs')
+parser.add_argument('--epoch', dest='nb_epoch', type=int, default=5000, help='# of epochs')
 parser.add_argument('--learning_rate', dest='lr', type=int, default=0.0001, help='# learning rate')
 parser.add_argument('--sample_size', dest='sample_size', type=int, default=60, help='# sample size')
 parser.add_argument('--gen_hidden', dest='gen_hidden', type=int, default=80, help='# hidden nodes in generator')
@@ -144,7 +144,7 @@ def main():
     tf.summary.scalar("Generator_Loss", gen_loss)
     tf.summary.scalar("Discriminator_Loss", disc_loss)
     
-    if str(var0)=='y':
+    if var0=='y':
         logs_path = 'C:/Users/'+args['your_login']+'/Anaconda3/envs/Scripts/plot_1'
     else:
         logs_path = '/home/'+args['your_login']+'/anaconda3/envs/plot_1'
@@ -210,10 +210,10 @@ def main():
             plt.gray()
             gs.tight_layout(fig)
         plt.show()
-        if str(var)=='n':
+        if var=='n':
             pass
         else:
-            if str(var)=='y':
+            if var0=='y':
                 os.system('tensorboard --logdir='+'C:/Users/'+args['your_login']+'/Anaconda3/envs/Scripts/plot_1')
             else:
                 os.system('tensorboard --logdir=/home/'+args['your_login']+'/anaconda3/envs/plot_1')
