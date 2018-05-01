@@ -19,7 +19,7 @@ parser.add_argument('--your_login', dest='your_login', type=str, default='rubens
 args = vars(parser.parse_args())
 
 print("\nIMPORTANT NOTICE: Tensorboard will start AFTER you close the pop-up with MNIST digits output.")
-var0 = input("Are you using Windows? [y|n]")
+var0 = input("Are you using Linux? [y|n]")
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
@@ -144,7 +144,7 @@ def main():
     tf.summary.scalar("Generator_Loss", gen_loss)
     tf.summary.scalar("Discriminator_Loss", disc_loss)
     
-    if str(var0)=='y':
+    if str(var0)=='n':
         logs_path = 'C:/Users/'+args['your_login']+'/Anaconda3/envs/Scripts/plot_1'
     else:
         logs_path = '/home/'+args['your_login']+'/anaconda3/envs/plot_1'
