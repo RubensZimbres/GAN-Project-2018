@@ -8,6 +8,8 @@ git clone https://github.com/RubensZimbres/GAN-Project-2018
 
 cd GAN-Project-2018
 
+conda install --yes --file requirements.txt
+
 python main.py --epoch=5000 --learning_rate=0.0002 --your_login=rubens
 
 Arguments:  
