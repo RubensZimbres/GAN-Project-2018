@@ -1,4 +1,4 @@
-# Deep Convolutional GAN in Tensorflow - Linux Shell
+# Generative Adversarial Networks in Tensorflow - Linux Shell
 
 My GitHub project on DCGANs to be run via Windows/Linux shell command
 
