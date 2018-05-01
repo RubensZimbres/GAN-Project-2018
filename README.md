@@ -18,8 +18,9 @@ Arguments:
 --disc_hidden: # hidden nodes in discriminator: default=80  
 --your_login: your login in your OS: default:rubens
 
-To visualize training in Tensorboard:  
-tensorboard --logdir=/home/your_login/anaconda3/envs/plot_1
+Select your OS in the interface
+
+To automatically visualize training in Tensorboard, answer 'y' to question after training
 
 <img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/output_GAN.png>  
 
