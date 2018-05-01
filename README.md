@@ -1,6 +1,6 @@
 # Generative Adversarial Networks in Tensorflow - Linux Shell
 
-My GitHub project on DCGANs to be run via Windows/Linux shell command
+My GitHub project on GANs to be run via Windows/Linux shell command
 
 Instructions:
 
