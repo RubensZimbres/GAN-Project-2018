@@ -11,17 +11,12 @@ cd GAN-Project-2018
 python main.py --epoch=5000 --learning_rate=0.0002 --your_login=rubens
 
 Arguments:  
---epoch: default=1000  
+--epoch: default=5000  
 --learning_rate: default=0.0001  
 --sample_size: default=60  
 --gen_hidden: # hidden nodes in generator: default=80  
 --disc_hidden: # hidden nodes in discriminator: default=80  
 --your_login: your login in your OS: default:rubens
-
-Select your OS in the interface
-
-Select if you want to visualize training in Tensorboard.
-
 
 <img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/output_GAN.png>  
 
