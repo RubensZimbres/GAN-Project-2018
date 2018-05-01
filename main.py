@@ -186,13 +186,6 @@ def main():
             summary_writer.add_summary(summary2, i)
             if i % show_steps == 0 or i == 1:
                 print('Epoch %i: Generator Loss: %f, Discriminator Loss: %f' % (i, gl, dl))
-        if str(var)=='n':
-            pass
-        else:
-            if str(var0)=='y':
-                os.system('tensorboard --logdir='+'C:/Users/'+args['your_login']+'/Anaconda3/envs/Scripts/plot_1')
-            else:
-                os.system('tensorboard --logdir=/home/'+args['your_login']+'/anaconda3/envs/plot_1')
         gs = gridspec.GridSpec(3, 8)
         gs.update(wspace=0.5)
         fig=plt.figure(figsize=(10,10))
@@ -217,6 +210,13 @@ def main():
             plt.gray()
             gs.tight_layout(fig)
         plt.show()
+        if str(var)=='n':
+            pass
+        else:
+            if str(var)=='y':
+                os.system('tensorboard --logdir='+'C:/Users/'+args['your_login']+'/Anaconda3/envs/Scripts/plot_1')
+            else:
+                os.system('tensorboard --logdir=/home/'+args['your_login']+'/anaconda3/envs/plot_1')
 
 
             
