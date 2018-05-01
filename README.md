@@ -18,4 +18,6 @@ Arguments:
 --disc_hidden: # hidden nodes in discriminator: default=80  
 --your_login: your login in your OS: default:rubens
 
-<img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/Pictures/Screen_output.png>  
+<img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/Pictures/Screen_output.png> 
+
+<img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/Pictures/tensorboard.png>
