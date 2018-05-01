@@ -20,7 +20,8 @@ Arguments:
 
 Select your OS in the interface
 
-To automatically visualize training in Tensorboard, answer 'y' to question after training
+Select if you want to visualize training in Tensorboard.
+
 
 <img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/output_GAN.png>  
 
