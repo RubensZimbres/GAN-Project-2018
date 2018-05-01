@@ -143,7 +143,7 @@ def main():
     tf.summary.scalar("Generator_Loss", gen_loss)
     tf.summary.scalar("Discriminator_Loss", disc_loss)
     
-    if var0=='yes':
+    if str(var0)=='y':
         logs_path = 'C:/Users/'+args['your_login']+'/Anaconda3/envs/Scripts/plot_1'
     else:
         logs_path = '/home/'+args['your_login']+'/anaconda3/envs/plot_1'
@@ -208,10 +208,11 @@ def main():
             gs.tight_layout(fig)
         plt.show()
         var = input("Would you like to run Tensorboard? [y|n]")
-        if var=='n'
+
+        if str(var)=='n':
             pass
         else:
-            if var0=='y':
+            if str(var0)=='y':
                 os.system('tensorboard --logdir='+'C:/Users/'+args['your_login']+'/Anaconda3/envs/Scripts/plot_1')
             else:
                 os.system('tensorboard --logdir=/home/'+args['your_login']+'/anaconda3/envs/plot_1')
