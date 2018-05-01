@@ -4,13 +4,13 @@ My GitHub project on GANs to be run via Windows/Linux shell command
 
 Instructions:
 
-git clone https://github.com/RubensZimbres/GAN-Project-2018
+$ git clone https://github.com/RubensZimbres/GAN-Project-2018
 
-cd GAN-Project-2018
+$ cd GAN-Project-2018
 
-conda install --yes --file requirements.txt
+$ conda install --yes --file requirements.txt
 
-python main.py --epoch=5000 --learning_rate=0.0002 --your_login=rubens
+$ python main.py --epoch=4000 --learning_rate=0.0002 --your_login=rubens
 
 Arguments:  
 --epoch: default=5000  
