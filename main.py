@@ -19,7 +19,7 @@ parser.add_argument('--your_login', dest='your_login', type=str, default='rubens
 args = vars(parser.parse_args())
 
 var0 = input("Are you using Windows? [y|n]")
-var = input("Would you like to run Tensorboard after training? [y|n]")
+var = input("Would you like to run Tensorboard after training? [y|n] \n IMPORTANTE NOTICE: Tensorboard will start AFTER you close the pop-up with MNIST digits output")
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
