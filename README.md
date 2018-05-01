@@ -21,6 +21,6 @@ Arguments:
 To visualize training in Tensorboard:  
 tensorboard --logdir=/home/your_login/anaconda3/envs/plot_1
 
-<img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/GAN_code.png>  
+<img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/output_GAN.png>  
 
 <img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/Loss_GAN_GitHub.png>
