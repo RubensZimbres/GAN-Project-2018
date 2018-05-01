@@ -6,6 +6,7 @@ import random
 import pandas as pd
 import argparse
 import matplotlib.gridspec as gridspec
+import os
 
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('--epoch', dest='nb_epoch', type=int, default=1000, help='# of epochs')
@@ -17,6 +18,7 @@ parser.add_argument('--your_login', dest='your_login', type=str, default='rubens
 
 args = vars(parser.parse_args())
 
+var0 = input("Are you using Windows? [y|n]")
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
@@ -141,7 +143,10 @@ def main():
     tf.summary.scalar("Generator_Loss", gen_loss)
     tf.summary.scalar("Discriminator_Loss", disc_loss)
     
-    logs_path = '/home/'+args['your_login']+'/anaconda3/envs/plot_1'
+    if var0=='yes':
+        logs_path = 'C:/Users/'+args['your_login']+'/Anaconda3/envs/Scripts/plot_1'
+    else:
+        logs_path = '/home/'+args['your_login']+'/anaconda3/envs/plot_1'
         
     summary = tf.summary.merge_all()
     
@@ -202,6 +207,14 @@ def main():
             plt.gray()
             gs.tight_layout(fig)
         plt.show()
+        var = input("Would you like to run Tensorboard? [y|n]")
+        if var=='n'
+            pass
+        else:
+            if var0=='y':
+                os.system('tensorboard --logdir='+'C:/Users/'+args['your_login']+'/Anaconda3/envs/Scripts/plot_1')
+            else:
+                os.system('tensorboard --logdir=/home/'+args['your_login']+'/anaconda3/envs/plot_1')
 
 
             
