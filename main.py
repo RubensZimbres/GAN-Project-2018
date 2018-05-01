@@ -19,6 +19,7 @@ parser.add_argument('--your_login', dest='your_login', type=str, default='rubens
 args = vars(parser.parse_args())
 
 var0 = input("Are you using Windows? [y|n]")
+var = input("Would you like to run Tensorboard after training? [y|n]")
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
@@ -209,8 +210,6 @@ def main():
             plt.gray()
             gs.tight_layout(fig)
         plt.show()
-        var = input("Would you like to run Tensorboard? [y|n]")
-
         if str(var)=='n':
             pass
         else:
