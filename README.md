@@ -20,6 +20,8 @@ Arguments:
 --disc_hidden: # hidden nodes in discriminator: default=80  
 --your_login: your login in your OS: default:rubens
 
+Tensorboard will start AFTER you close the pop-up (GAN output with MNIST digits)
+
 <img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/Pictures/Screen_output.png> 
 
 <img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/Pictures/tensorboard.png>
