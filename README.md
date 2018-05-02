@@ -10,9 +10,9 @@ $ cd GAN-Project-2018
 
 $ conda install --yes --file requirements.txt
 
-$ python main.py --epoch=4000 --learning_rate=0.0002 --your_login=rubens```
-
-Arguments:  
+$ python main.py --epoch=4000 --learning_rate=0.0002 --your_login=rubens
+```  
+Arguments:  
 --epoch: default=5000  
 --learning_rate: default=0.0001  
 --sample_size: default=60  
