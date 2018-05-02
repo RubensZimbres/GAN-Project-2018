@@ -26,4 +26,8 @@ Tensorboard will start AFTER you close the pop-up (GAN output with MNIST digits)
 
 <img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/Pictures/Screen_output.png> 
 
-<img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/Pictures/tensorboard.png>
+<img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/Pictures/Tensorboard_1.png>
+
+<img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/Pictures/Tensorboard_2.png>
+
+<img src=https://github.com/RubensZimbres/GAN-Project-2018/blob/master/Pictures/Tensorboard_3.png>
