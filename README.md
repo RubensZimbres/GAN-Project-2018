@@ -4,7 +4,8 @@ My GitHub project on GANs to be run via Windows/Linux shell command
 
 Instructions:
 
-```$ git clone https://github.com/RubensZimbres/GAN-Project-2018
+```
+$ git clone https://github.com/RubensZimbres/GAN-Project-2018
 
 $ cd GAN-Project-2018
 
