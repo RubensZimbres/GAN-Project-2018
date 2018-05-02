@@ -10,7 +10,7 @@ import os
 
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('--epoch', dest='nb_epoch', type=int, default=5000, help='# of epochs')
-parser.add_argument('--learning_rate', dest='lr', type=int, default=0.0001, help='# learning rate')
+parser.add_argument('--learning_rate', dest='lr', type=float, default=0.0001, help='# learning rate')
 parser.add_argument('--sample_size', dest='sample_size', type=int, default=60, help='# sample size')
 parser.add_argument('--gen_hidden', dest='gen_hidden', type=int, default=80, help='# hidden nodes in generator')
 parser.add_argument('--disc_hidden', dest='disc_hidden', type=int, default=80, help='# hidden nodes in discriminator')
@@ -153,7 +153,10 @@ def main():
     
     optimizer_gen = tf.train.AdamOptimizer(learning_rate=learning_rate1)
     optimizer_disc = tf.train.AdamOptimizer(learning_rate=learning_rate1)
-        
+       
+    gen_vars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope='Generator')
+    disc_vars = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope='Discriminator')
+
     with tf.name_scope('SGDdisc'):
         train_disc = optimizer_disc.minimize(disc_loss)
     
@@ -161,6 +164,17 @@ def main():
     with tf.name_scope('SGDgen'):
         train_gen = optimizer_gen.minimize(gen_loss)
     
+    x_image = tf.summary.image('GenSample', tf.reshape(gen_sample, [-1, 28, 28, 1]), 4)
+    x_image2 = tf.summary.image('stacked_gan', tf.reshape(stacked_gan, [-1, 28, 28, 1]), 4)
+    
+    
+    for i in range(0,11):
+        with tf.name_scope('layer'+str(i)):
+            pesos=tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
+            tf.summary.histogram('pesos'+str(i), pesos[i])
+
+  
+    summary = tf.summary.merge_all()
     
     init = tf.global_variables_initializer()
     
