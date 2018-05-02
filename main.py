@@ -72,7 +72,7 @@ gen_hidden_dim = args['gen_hidden']
 disc_hidden_dim = args['disc_hidden']
 noise_dim = 10 
 
-def main():
+def GAN(batch_size):
 
     def mean(x):
         mm,_=tf.nn.moments(x,axes=[0])
@@ -227,4 +227,4 @@ def main():
 
             
 if __name__ == '__main__':
-   main()
+   GAN(args['sample_size'])
