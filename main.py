@@ -133,9 +133,7 @@ def main():
     with tf.name_scope('GenLoss'):
         gen_loss = tf.reduce_mean(tf.losses.mean_squared_error(
         real_image_input,gen_sample))
-    
-    '''ate aqui ok'''
-    
+        
     
     with tf.name_scope('DiscLoss'):
         disc_loss = tf.reduce_mean(tf.losses.mean_squared_error(
