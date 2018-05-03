@@ -201,7 +201,7 @@ def GAN(sample_size):
         gs = gridspec.GridSpec(3, 8)
         gs.update(wspace=0.5)
         fig=plt.figure(figsize=(10,10))
-        for i in range(0,len(args['sample_size'])):
+        for i in range(0,8):
             ax1 = plt.subplot(gs[0, i])
             ax1.get_xaxis().set_visible(False)
             ax1.get_yaxis().set_visible(False)
