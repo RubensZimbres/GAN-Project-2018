@@ -65,7 +65,7 @@ x_train_noisy=x_train_noisy.astype(np.float64)
 
 num_steps = args['nb_epoch']
 batch_size = args['sample_size']
-show_steps=10
+show_steps=50
 learning_rate1=args['lr']
 image_dim = 784 
 gen_hidden_dim = args['gen_hidden']
