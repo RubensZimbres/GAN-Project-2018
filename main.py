@@ -146,9 +146,7 @@ def GAN(sample_size):
         logs_path = 'C:/Users/'+args['your_login']+'/Anaconda3/envs/Scripts/plot_1'
     else:
         logs_path = '/home/'+args['your_login']+'/anaconda3/envs/plot_1'
-        
-    summary = tf.summary.merge_all()
-    
+            
     optimizer_gen = tf.train.AdamOptimizer(learning_rate=learning_rate1)
     optimizer_disc = tf.train.AdamOptimizer(learning_rate=learning_rate1)
        
