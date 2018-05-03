@@ -72,7 +72,7 @@ gen_hidden_dim = args['gen_hidden']
 disc_hidden_dim = args['disc_hidden']
 noise_dim = 10 
 
-def GAN(batch_size):
+def GAN(sample_size):
 
     def mean(x):
         mm,_=tf.nn.moments(x,axes=[0])
@@ -188,7 +188,7 @@ def GAN(batch_size):
         sess.run(init)
         summary_writer = tf.summary.FileWriter(logs_path, graph=tf.get_default_graph())
         for i in range(1, num_steps+1):
-            batch_x, batch_y=next_batch(batch_size, x_train, x_train_noisy)        
+            batch_x, batch_y=next_batch(sample_size, x_train, x_train_noisy)        
             feed_dict = {real_image_input: batch_x, noise_input: batch_y,
                      disc_target: batch_x, gen_target: batch_y}
             _, _, gl, dl,summary2 = sess.run([train_gen, train_disc, gen_loss, disc_loss,summary],
