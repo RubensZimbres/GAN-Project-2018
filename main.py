@@ -12,7 +12,6 @@ parser = argparse.ArgumentParser(description='')
 parser.add_argument('--epoch', dest='nb_epoch', type=int, default=5000, help='# of epochs')
 parser.add_argument('--learning_rate', dest='lr', type=float, default=0.0001, help='# learning rate')
 parser.add_argument('--sample_size', dest='sample_size', type=int, default=60, help='# sample size')
-parser.add_argument('--batch_size', dest='batch_size', type=int, default=60, help='# batch size')
 parser.add_argument('--gen_hidden', dest='gen_hidden', type=int, default=80, help='# hidden nodes in generator')
 parser.add_argument('--disc_hidden', dest='disc_hidden', type=int, default=80, help='# hidden nodes in discriminator')
 parser.add_argument('--your_login', dest='your_login', type=str, default='rubens', help='# your login name')
@@ -65,13 +64,15 @@ x_train=np.array(x_train).astype(np.float64)
 x_train_noisy=x_train_noisy.astype(np.float64)
 
 num_steps = args['nb_epoch']
-batch_size = args['batch_size']
-show_steps=50
+batch_size = args['sample_size']
+show_steps=10
 learning_rate1=args['lr']
 image_dim = 784 
 gen_hidden_dim = args['gen_hidden']
 disc_hidden_dim = args['disc_hidden']
 noise_dim = 10 
+
+num_steps=10
 
 def GAN(sample_size):
 
@@ -189,7 +190,7 @@ def GAN(sample_size):
         sess.run(init)
         summary_writer = tf.summary.FileWriter(logs_path, graph=tf.get_default_graph())
         for i in range(1, num_steps+1):
-            batch_x, batch_y=next_batch(batch_size, x_train, x_train_noisy)        
+            batch_x, batch_y=next_batch(sample_size, x_train, x_train_noisy)        
             feed_dict = {real_image_input: batch_x, noise_input: batch_y,
                      disc_target: batch_x, gen_target: batch_y}
             _, _, gl, dl,summary2 = sess.run([train_gen, train_disc, gen_loss, disc_loss,summary],
@@ -213,13 +214,13 @@ def GAN(sample_size):
             ax2.get_xaxis().set_visible(False)
             ax2.get_yaxis().set_visible(False)
             plt.title('Gen')
-            plt.imshow(np.array(h).reshape(args['sample_size'],28, 28)[i])
+            plt.imshow(np.array(h).reshape(sample_size,28, 28)[i])
             plt.gray()
             ax3 = plt.subplot(gs[2, i])
             ax3.get_xaxis().set_visible(False)
             ax3.get_yaxis().set_visible(False)
             plt.title('Disc')
-            plt.imshow(np.array(g).reshape(args['sample_size'],28, 28)[i])
+            plt.imshow(np.array(g).reshape(sample_size,28, 28)[i])
             plt.gray()
             gs.tight_layout(fig)
         plt.show()
@@ -229,3 +230,4 @@ def GAN(sample_size):
             
 if __name__ == '__main__':
    GAN(args['sample_size'])
+1568/784
