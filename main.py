@@ -228,4 +228,3 @@ def GAN(sample_size):
             
 if __name__ == '__main__':
    GAN(args['sample_size'])
-1568/784
