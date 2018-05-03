@@ -7,8 +7,11 @@ Instructions:
 ```
 $ git clone https://github.com/RubensZimbres/GAN-Project-2018
 
-$ cd GAN-Project-2018
+$ cd GAN-Project-2018 
+```
+If you are sure all the libraries in requirements.txt are installed, go to $ python main.py ... 
 
+```
 $ conda install --yes --file requirements.txt
 
 $ python main.py --epoch=4000 --learning_rate=0.0002 --your_login=rubens
