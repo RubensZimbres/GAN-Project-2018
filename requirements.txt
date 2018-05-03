@@ -1,4 +1,4 @@
-tensorflow
+tensorflow==1.7
 numpy
 matplotlib
 keras
