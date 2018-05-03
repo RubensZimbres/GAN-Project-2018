@@ -12,6 +12,7 @@ parser = argparse.ArgumentParser(description='')
 parser.add_argument('--epoch', dest='nb_epoch', type=int, default=5000, help='# of epochs')
 parser.add_argument('--learning_rate', dest='lr', type=float, default=0.0001, help='# learning rate')
 parser.add_argument('--sample_size', dest='sample_size', type=int, default=60, help='# sample size')
+parser.add_argument('--batch_size', dest='batch_size', type=int, default=60, help='# batch size')
 parser.add_argument('--gen_hidden', dest='gen_hidden', type=int, default=80, help='# hidden nodes in generator')
 parser.add_argument('--disc_hidden', dest='disc_hidden', type=int, default=80, help='# hidden nodes in discriminator')
 parser.add_argument('--your_login', dest='your_login', type=str, default='rubens', help='# your login name')
@@ -64,7 +65,7 @@ x_train=np.array(x_train).astype(np.float64)
 x_train_noisy=x_train_noisy.astype(np.float64)
 
 num_steps = args['nb_epoch']
-batch_size = args['sample_size']
+batch_size = args['batch_size']
 show_steps=50
 learning_rate1=args['lr']
 image_dim = 784 
@@ -92,12 +93,12 @@ def GAN(sample_size):
             x = tf.nn.batch_normalization(x,mean=mean(x), variance=var(x),offset=None,scale=None,variance_epsilon=1e-3)
             x = tf.layers.conv2d_transpose(x, 1, 2, strides=2)
             x = tf.nn.relu(x)
-            x = tf.reshape(x, [n,784])
+            x = tf.reshape(x, [batch_size,784])
             return x
     
     def discriminator(x, reuse=False):
         with tf.variable_scope('Discriminator', reuse=reuse):
-            x = tf.reshape(x, [n,28,28,1])
+            x = tf.reshape(x, [batch_size,28,28,1])
             x = tf.layers.conv2d(x, 32, 5)
             x = tf.nn.relu(x)
             x = tf.layers.average_pooling2d(x, 2, 2,padding='same')
@@ -188,7 +189,7 @@ def GAN(sample_size):
         sess.run(init)
         summary_writer = tf.summary.FileWriter(logs_path, graph=tf.get_default_graph())
         for i in range(1, num_steps+1):
-            batch_x, batch_y=next_batch(sample_size, x_train, x_train_noisy)        
+            batch_x, batch_y=next_batch(batch_size, x_train, x_train_noisy)        
             feed_dict = {real_image_input: batch_x, noise_input: batch_y,
                      disc_target: batch_x, gen_target: batch_y}
             _, _, gl, dl,summary2 = sess.run([train_gen, train_disc, gen_loss, disc_loss,summary],
