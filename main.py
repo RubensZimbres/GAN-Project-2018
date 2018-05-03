@@ -72,8 +72,6 @@ gen_hidden_dim = args['gen_hidden']
 disc_hidden_dim = args['disc_hidden']
 noise_dim = 10 
 
-num_steps=10
-
 def GAN(sample_size):
 
     def mean(x):
