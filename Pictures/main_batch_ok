@@ -240,4 +240,3 @@ def GAN(batch_size):
 
 if __name__ == '__main__':
    GAN(args['batch_size'])
-
